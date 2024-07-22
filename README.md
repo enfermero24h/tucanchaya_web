@@ -74,3 +74,4 @@ mi-proyecto-web front/
 │   └── store.js (opcional para Redux)
 └── package.json
 
+# tucanchaya_web
