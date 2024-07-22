@@ -1,15 +1,17 @@
-// src/config/db.ts
 import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/tu_base_de_datos', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
+    await mongoose.connect('mongodb://localhost:27017/tucanchaya', {
+      // No se necesitan las opciones obsoletas como `useNewUrlParser` o `useUnifiedTopology`
     });
     console.log('MongoDB conectado');
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    } else {
+      console.error('An unknown error occurred during database connection');
+    }
     process.exit(1);
   }
 };

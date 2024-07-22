@@ -1,19 +1,21 @@
-// src/models/Grupo.ts
-import { Schema, model, Document } from 'mongoose';
+// src/Crud/grupoServices.ts
+import mongoose, { Document, Schema } from 'mongoose';
 
-interface IGrupo extends Document {
+// Define la interfaz para el documento
+export interface IGrupo extends Document {
   nombre: string;
   descripcion: string;
-  miembros: string[];
+  // Agrega otras propiedades según tus necesidades
 }
 
-const GrupoSchema = new Schema<IGrupo>({
+// Define el esquema del modelo
+const GrupoSchema: Schema = new Schema({
   nombre: { type: String, required: true },
-  descripcion: { type: String, required: true },
-  miembros: { type: [String], default: [] }
+  descripcion: { type: String, required: true }
+  // Define otros campos según tus necesidades
 });
 
-const Grupo = model<IGrupo>('Grupo', GrupoSchema);
+// Crea el modelo de Mongoose
+const Grupo = mongoose.model<IGrupo>('Grupo', GrupoSchema);
 
 export default Grupo;
-export { IGrupo };

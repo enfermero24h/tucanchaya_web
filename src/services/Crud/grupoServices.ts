@@ -1,5 +1,4 @@
-// src/services/GrupoService.ts
-import Grupo, { IGrupo } from '../Crud/grupoServices';
+import Grupo, { IGrupo } from '../../models/grupo';
 
 class GrupoService {
   async crearGrupo(grupo: IGrupo): Promise<IGrupo> {

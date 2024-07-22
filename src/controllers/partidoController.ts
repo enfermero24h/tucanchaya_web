@@ -7,7 +7,11 @@ class PartidoController {
       const partido = await PartidoService.crearPartido(req.body);
       res.status(201).json(partido);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -16,7 +20,11 @@ class PartidoController {
       const partidos = await PartidoService.obtenerPartidos();
       res.status(200).json(partidos);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -29,7 +37,11 @@ class PartidoController {
         res.status(404).json({ message: 'Partido no encontrado' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -42,7 +54,11 @@ class PartidoController {
         res.status(404).json({ message: 'Partido no encontrado' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -55,7 +71,11 @@ class PartidoController {
         res.status(404).json({ message: 'Partido no encontrado' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 }

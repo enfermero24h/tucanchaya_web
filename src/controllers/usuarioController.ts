@@ -10,7 +10,11 @@ export const getUsers = async (req: Request, res: Response): Promise<void> => {
     const users = await userService.getAll();
     res.json(users);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'An unknown error occurred' });
+    }
   }
 };
 
@@ -24,7 +28,11 @@ export const getUserById = async (req: Request, res: Response): Promise<void> =>
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'An unknown error occurred' });
+    }
   }
 };
 
@@ -34,7 +42,11 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
     const newUser = await userService.create(userData);
     res.status(201).json(newUser);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'An unknown error occurred' });
+    }
   }
 };
 
@@ -49,7 +61,11 @@ export const updateUser = async (req: Request, res: Response): Promise<void> => 
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'An unknown error occurred' });
+    }
   }
 };
 
@@ -63,6 +79,10 @@ export const deleteUser = async (req: Request, res: Response): Promise<void> => 
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'An unknown error occurred' });
+    }
   }
 };

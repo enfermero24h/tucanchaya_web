@@ -8,7 +8,11 @@ class CanchaController {
       const cancha = await CanchaService.crearCancha(req.body);
       res.status(201).json(cancha);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -17,7 +21,11 @@ class CanchaController {
       const canchas = await CanchaService.obtenerCanchas();
       res.status(200).json(canchas);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -30,7 +38,11 @@ class CanchaController {
         res.status(404).json({ message: 'Cancha no encontrada' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -43,7 +55,11 @@ class CanchaController {
         res.status(404).json({ message: 'Cancha no encontrada' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -56,7 +72,11 @@ class CanchaController {
         res.status(404).json({ message: 'Cancha no encontrada' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 }

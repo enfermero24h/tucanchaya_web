@@ -8,7 +8,11 @@ class EquipoController {
       const equipo = await EquipoService.crearEquipo(req.body);
       res.status(201).json(equipo);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -17,7 +21,11 @@ class EquipoController {
       const equipos = await EquipoService.obtenerEquipos();
       res.status(200).json(equipos);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -30,7 +38,11 @@ class EquipoController {
         res.status(404).json({ message: 'Equipo no encontrado' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -43,7 +55,11 @@ class EquipoController {
         res.status(404).json({ message: 'Equipo no encontrado' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -56,7 +72,11 @@ class EquipoController {
         res.status(404).json({ message: 'Equipo no encontrado' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 }

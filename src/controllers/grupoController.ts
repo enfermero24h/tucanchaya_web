@@ -8,7 +8,11 @@ class GrupoController {
       const grupo = await GrupoService.crearGrupo(req.body);
       res.status(201).json(grupo);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -17,7 +21,11 @@ class GrupoController {
       const grupos = await GrupoService.obtenerGrupos();
       res.status(200).json(grupos);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -30,7 +38,11 @@ class GrupoController {
         res.status(404).json({ message: 'Grupo no encontrado' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -43,7 +55,11 @@ class GrupoController {
         res.status(404).json({ message: 'Grupo no encontrado' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 
@@ -56,7 +72,11 @@ class GrupoController {
         res.status(404).json({ message: 'Grupo no encontrado' });
       }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unknown error occurred' });
+      }
     }
   }
 }
