@@ -1,31 +1,38 @@
 # tucanchaya
 Estructura del Proyecto:
 
-tucanchaya back/
-├── controllers/
-│   ├── usuarioController.js
-│   ├── equipoController.js
-│   ├── grupoController.js
-│   ├── partidoController.js
-│   ├── canchaController.js
-│   └── asentamientoController.js
-├── models/
-│   ├── usuario.js
-│   ├── equipo.js
-│   ├── grupo.js
-│   ├── partido.js
-│   ├── cancha.js
-│   └── asentamiento.js
-├── routes/
-│   ├── usuarioRoutes.js
-│   ├── equipoRoutes.js
-│   ├── grupoRoutes.js
-│   ├── partidoRoutes.js
-│   ├── canchaRoutes.js
-│   └── asentamientoRoutes.js
-├── index.js
+back/
+mi_proyecto/
+├── src/
+│   ├── models/
+│   │   ├── cancha.ts
+│   │   ├── equipo.ts
+│   │   ├── grupo.ts
+│   │   ├── partido.ts
+│   │   └── asentamiento.ts
+│   ├── services/
+│   │   ├── canchaService.ts
+│   │   ├── equipoService.ts
+│   │   ├── grupoService.ts
+│   │   ├── partidoService.ts
+│   │   └── asentamientoService.ts
+│   ├── controllers/
+│   │   ├── canchaController.ts
+│   │   ├── equipoController.ts
+│   │   ├── grupoController.ts
+│   │   ├── partidoController.ts
+│   │   └── asentamientoController.ts
+│   ├── routes/
+│   │   ├── canchaRoutes.ts
+│   │   ├── equipoRoutes.ts
+│   │   ├── grupoRoutes.ts
+│   │   ├── partidoRoutes.ts
+│   │   └── asentamientoRoutes.ts
+│   └── index.ts
 ├── package.json
-└── README.md
+├── tsconfig.json
+└── .gitignore
+
 
 
 mi-proyecto-web front/
