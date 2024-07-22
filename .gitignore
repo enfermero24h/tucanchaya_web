@@ -6,3 +6,5 @@ temp/
 # Ignorar archivos específicos
 *.log
 *.tmp
+
+package-lock.json
