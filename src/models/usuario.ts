@@ -1,16 +1,20 @@
-// src/models/user.ts
-import { Schema, model, Document } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-export interface User extends Document {
-  username: string;
+// Interfaz para el documento de usuario
+export interface IUser extends Document {
+  nombre: string;
   email: string;
-  password: string; // Asegúrate de usar hashing y seguridad para contraseñas
+  password: string;
+  // Agrega otros campos que necesites
 }
 
-const userSchema = new Schema<User>({
-  username: { type: String, required: true },
+// Esquema del usuario
+const userSchema: Schema = new Schema({
+  nombre: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  // Define otros campos según tus necesidades
 });
 
-export default model<User>('User', userSchema);
+const UserModel = mongoose.model<IUser>('User', userSchema);
+export default UserModel;

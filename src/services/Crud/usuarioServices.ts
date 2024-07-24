@@ -1,32 +1,26 @@
-// src/services/userService.ts
-import { Model, Document } from 'mongoose';
-import { User } from '../../models/usuario'; // Asegúrate de que el modelo User esté definido y exportado
+import UserModel, { IUser } from '../../models/usuario';
 
-export class UserService {
-  private model: Model<User & Document>;
-
-  constructor(model: Model<User & Document>) {
-    this.model = model;
+class UserService {
+  async getAll(): Promise<IUser[]> {
+    return await UserModel.find();
   }
 
-  async getAll(): Promise<User[]> {
-    return this.model.find().exec();
+  async getById(id: string): Promise<IUser | null> {
+    return await UserModel.findById(id);
   }
 
-  async getById(id: string): Promise<User | null> {
-    return this.model.findById(id).exec();
+  async create(user: IUser): Promise<IUser> {
+    const newUser = new UserModel(user);
+    return await newUser.save();
   }
 
-  async create(data: User): Promise<User> {
-    const newUser = new this.model(data);
-    return newUser.save();
+  async update(id: string, user: Partial<IUser>): Promise<IUser | null> {
+    return await UserModel.findByIdAndUpdate(id, user, { new: true });
   }
 
-  async update(id: string, data: Partial<User>): Promise<User | null> {
-    return this.model.findByIdAndUpdate(id, data, { new: true }).exec();
-  }
-
-  async delete(id: string): Promise<User | null> {
-    return this.model.findByIdAndDelete(id).exec();
+  async delete(id: string): Promise<IUser | null> {
+    return await UserModel.findByIdAndDelete(id);
   }
 }
+
+export default UserService;
