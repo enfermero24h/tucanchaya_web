@@ -34,6 +34,72 @@ mi_proyecto/
 └── .gitignore
 
 
+V2 del Back : 
+
+mi_proyecto/
+├── src/
+│   ├── models/
+│   │   ├── cancha.ts
+│   │   ├── equipo.ts
+│   │   ├── grupo.ts
+│   │   ├── partido.ts
+│   │   ├── asentamiento.ts
+│   │   ├── sector.ts
+│   │   ├── usuario.ts
+│   │   ├── reserva.ts
+│   │   └── pago.ts
+│   ├── services/
+│   │   ├── canchaService.ts
+│   │   ├── equipoService.ts
+│   │   ├── grupoService.ts
+│   │   ├── partidoService.ts
+│   │   ├── asentamientoService.ts
+│   │   ├── sectorService.ts
+│   │   ├── authService.ts
+│   │   ├── reservaService.ts
+│   │   └── pagoService.ts
+│   ├── controllers/
+│   │   ├── canchaController.ts
+│   │   ├── equipoController.ts
+│   │   ├── grupoController.ts
+│   │   ├── partidoController.ts
+│   │   ├── asentamientoController.ts
+│   │   ├── sectorController.ts
+│   │   ├── authController.ts
+│   │   ├── reservaController.ts
+│   │   └── pagoController.ts
+│   ├── routes/
+│   │   ├── canchaRoutes.ts
+│   │   ├── equipoRoutes.ts
+│   │   ├── grupoRoutes.ts
+│   │   ├── partidoRoutes.ts
+│   │   ├── asentamientoRoutes.ts
+│   │   ├── sectorRoutes.ts
+│   │   ├── authRoutes.ts
+│   │   ├── reservaRoutes.ts
+│   │   └── pagoRoutes.ts
+│   ├── middleware/
+│   │   └── auth.ts
+│   ├── config/
+│   │   ├── database.ts
+│   │   ├── server.ts
+│   │   └── environment.ts
+│   ├── utils/
+│   │   ├── errorHandler.ts
+│   │   └── logger.ts
+│   └── index.ts
+├── tests/
+│   ├── unit/
+│   └── integration/
+├── docs/
+│   └── api.yaml
+├── package.json
+├── tsconfig.json
+└── .gitignore
+
+
+
+
 
 mi-proyecto-web front/
 ├── public/

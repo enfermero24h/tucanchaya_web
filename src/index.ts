@@ -6,6 +6,7 @@ import canchaRoutes from './routes/Crud/canchaRoutes';
 import equipoRoutes from './routes/Crud/equipoRoutes';
 import grupoRoutes from './routes/Crud/grupoRoutes';
 import partidoRoutes from './routes/Crud/partidoRoutes';
+import sectorRoutes from './routes/Crud/sectorRoutes';
 import authRoutes from './routes/auth/authRoutes';
 
 const app = express();
@@ -22,6 +23,7 @@ app.use('/api', grupoRoutes);
 app.use('/api', equipoRoutes);
 app.use('/api', canchaRoutes);
 app.use('/api', asentamientoRoutes);
+app.use('/api/sectores', sectorRoutes);
 
 //auth
 app.use('/api/auth', authRoutes); //autenticacion y registro
