@@ -2,16 +2,10 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/tucanchaya', {
-      // No se necesitan las opciones obsoletas como `useNewUrlParser` o `useUnifiedTopology`
-    });
+    await mongoose.connect('mongodb://localhost:27017/tucanchaya');
     console.log('MongoDB conectado');
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    } else {
-      console.error('An unknown error occurred during database connection');
-    }
+    console.error('Error conectando a MongoDB:', error);
     process.exit(1);
   }
 };

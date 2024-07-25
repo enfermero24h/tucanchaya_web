@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import PartidoService from '../services/Crud/partidoServices';
+import PartidoService from '../../services/Crud/partidoServices';
 
 class PartidoController {
   async crearPartido(req: Request, res: Response): Promise<void> {

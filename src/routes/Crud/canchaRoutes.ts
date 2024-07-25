@@ -1,6 +1,6 @@
 // src/routes/CanchaRoutes.ts
 import { Router } from 'express';
-import CanchaController from '../controllers/canchaController';
+import CanchaController from '../../controllers/Crud/canchaController';
 
 const router = Router();
 

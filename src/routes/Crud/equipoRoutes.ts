@@ -1,6 +1,6 @@
 // src/routes/EquipoRoutes.ts
 import { Router } from 'express';
-import EquipoController from '../controllers/equipoController';
+import EquipoController from '../../controllers/Crud/equipoController';
 
 const router = Router();
 

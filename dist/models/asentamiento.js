@@ -1,12 +1,11 @@
 "use strict";
-// models/asentamiento.js
-const mongoose = require('mongoose');
-const asentamientoSchema = new mongoose.Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+// src/models/Asentamiento.ts
+const mongoose_1 = require("mongoose");
+const AsentamientoSchema = new mongoose_1.Schema({
+    canchaId: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Cancha', required: true },
     fecha: { type: Date, required: true },
-    cancha: { type: mongoose.Schema.Types.ObjectId, ref: 'Cancha', required: true },
-    grupo: { type: mongoose.Schema.Types.ObjectId, ref: 'Grupo', required: true },
-    estado: { type: String, default: 'pendiente' },
-    fechaCreacion: { type: Date, default: Date.now }
+    estado: { type: String, enum: ['disponible', 'ocupado'], default: 'disponible' }
 });
-const Asentamiento = mongoose.model('Asentamiento', asentamientoSchema);
-module.exports = Asentamiento;
+const Asentamiento = (0, mongoose_1.model)('Asentamiento', AsentamientoSchema);
+exports.default = Asentamiento;

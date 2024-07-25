@@ -8,37 +8,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserService = void 0;
+const usuario_1 = __importDefault(require("../../models/usuario"));
 class UserService {
-    constructor(model) {
-        this.model = model;
-    }
     getAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.model.find().exec();
+            return yield usuario_1.default.find();
         });
     }
     getById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.model.findById(id).exec();
+            return yield usuario_1.default.findById(id);
         });
     }
-    create(data) {
+    create(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newUser = new this.model(data);
-            return newUser.save();
+            const newUser = new usuario_1.default(user);
+            return yield newUser.save();
         });
     }
-    update(id, data) {
+    update(id, user) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.model.findByIdAndUpdate(id, data, { new: true }).exec();
+            return yield usuario_1.default.findByIdAndUpdate(id, user, { new: true });
         });
     }
     delete(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.model.findByIdAndDelete(id).exec();
+            return yield usuario_1.default.findByIdAndDelete(id);
         });
     }
 }
-exports.UserService = UserService;
+exports.default = UserService;

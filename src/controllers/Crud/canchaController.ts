@@ -1,6 +1,6 @@
 // src/controllers/CanchaController.ts
 import { Request, Response } from 'express';
-import CanchaService from '../services/Crud/canchaServices';
+import CanchaService from '../../services/Crud/canchaServices';
 
 class CanchaController {
   async crearCancha(req: Request, res: Response): Promise<void> {

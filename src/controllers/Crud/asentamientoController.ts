@@ -1,6 +1,6 @@
 // src/controllers/AsentamientoController.ts
 import { Request, Response } from 'express';
-import AsentamientoService from '../services/Crud/asentamientoServices';
+import AsentamientoService from '../../services/Crud/asentamientoServices';
 
 class AsentamientoController {
   async crearAsentamiento(req: Request, res: Response): Promise<void> {

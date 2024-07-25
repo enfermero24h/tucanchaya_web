@@ -1,6 +1,6 @@
 // src/routes/GrupoRoutes.ts
 import { Router } from 'express';
-import GrupoController from '../controllers/grupoController';
+import GrupoController from '../../controllers/Crud/grupoController';
 
 const router = Router();
 

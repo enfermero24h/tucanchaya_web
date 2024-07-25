@@ -1,12 +1,16 @@
 "use strict";
-// models/partido.js
-const mongoose = require('mongoose');
-const partidoSchema = new mongoose.Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+// src/models/Partido.ts
+const mongoose_1 = require("mongoose");
+const PartidoSchema = new mongoose_1.Schema({
+    equipoLocal: { type: String, required: true },
+    equipoVisitante: { type: String, required: true },
     fecha: { type: Date, required: true },
-    ubicacion: { type: String, required: true },
-    grupos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Grupo' }],
-    resultado: { type: String },
-    fechaCreacion: { type: Date, default: Date.now }
+    lugar: { type: String, required: true },
+    marcador: {
+        local: { type: Number, default: 0 },
+        visitante: { type: Number, default: 0 }
+    }
 });
-const Partido = mongoose.model('Partido', partidoSchema);
-module.exports = Partido;
+const Partido = (0, mongoose_1.model)('Partido', PartidoSchema);
+exports.default = Partido;

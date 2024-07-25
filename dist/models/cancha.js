@@ -1,12 +1,12 @@
 "use strict";
-// models/cancha.js
-const mongoose = require('mongoose');
-const canchaSchema = new mongoose.Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+// src/models/Cancha.ts
+const mongoose_1 = require("mongoose");
+const CanchaSchema = new mongoose_1.Schema({
     nombre: { type: String, required: true },
     direccion: { type: String, required: true },
     dimensiones: { type: String, required: true },
-    ciudad: { type: String, required: true },
-    fechaCreacion: { type: Date, default: Date.now }
+    ciudad: { type: String, required: true }
 });
-const Cancha = mongoose.model('Cancha', canchaSchema);
-module.exports = Cancha;
+const Cancha = (0, mongoose_1.model)('Cancha', CanchaSchema);
+exports.default = Cancha;

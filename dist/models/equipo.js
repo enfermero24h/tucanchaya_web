@@ -1,10 +1,11 @@
 "use strict";
-// models/equipo.js
-const mongoose = require('mongoose');
-const equipoSchema = new mongoose.Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+// src/models/Equipo.ts
+const mongoose_1 = require("mongoose");
+const EquipoSchema = new mongoose_1.Schema({
     nombre: { type: String, required: true },
-    miembros: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' }],
-    fechaCreacion: { type: Date, default: Date.now }
+    ciudad: { type: String, required: true },
+    jugadores: { type: [String], default: [] }
 });
-const Equipo = mongoose.model('Equipo', equipoSchema);
-module.exports = Equipo;
+const Equipo = (0, mongoose_1.model)('Equipo', EquipoSchema);
+exports.default = Equipo;

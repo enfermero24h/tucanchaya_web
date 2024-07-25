@@ -1,6 +1,6 @@
 // src/controllers/GrupoController.ts
 import { Request, Response } from 'express';
-import GrupoService from '../services/Crud/grupoServices';
+import GrupoService from '../../services/Crud/grupoServices';
 
 class GrupoController {
   async crearGrupo(req: Request, res: Response): Promise<void> {

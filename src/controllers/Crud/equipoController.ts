@@ -1,6 +1,6 @@
 // src/controllers/EquipoController.ts
 import { Request, Response } from 'express';
-import EquipoService from '../services/Crud/equipoServices';
+import EquipoService from '../../services/Crud/equipoServices';
 
 class EquipoController {
   async crearEquipo(req: Request, res: Response): Promise<void> {

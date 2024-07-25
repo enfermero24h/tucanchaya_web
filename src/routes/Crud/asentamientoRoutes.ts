@@ -1,6 +1,6 @@
 // src/routes/AsentamientoRoutes.ts
 import { Router } from 'express';
-import AsentamientoController from '../controllers/asentamientoController';
+import AsentamientoController from '../../controllers/Crud/asentamientoController';
 
 const router = Router();
 
