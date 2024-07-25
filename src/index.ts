@@ -1,4 +1,3 @@
-// src/server.ts
 import express from 'express';
 import connectDB from './config/bd';
 import asentamientoRoutes from './routes/Crud/asentamientoRoutes';
@@ -6,6 +5,7 @@ import canchaRoutes from './routes/Crud/canchaRoutes';
 import equipoRoutes from './routes/Crud/equipoRoutes';
 import grupoRoutes from './routes/Crud/grupoRoutes';
 import partidoRoutes from './routes/Crud/partidoRoutes';
+import reservaRoutes from './routes/Crud/reservaRoutes';
 import sectorRoutes from './routes/Crud/sectorRoutes';
 import authRoutes from './routes/auth/authRoutes';
 
@@ -24,6 +24,7 @@ app.use('/api', equipoRoutes);
 app.use('/api', canchaRoutes);
 app.use('/api', asentamientoRoutes);
 app.use('/api/sectores', sectorRoutes);
+app.use('/api/reservas', reservaRoutes);
 
 //auth
 app.use('/api/auth', authRoutes); //autenticacion y registro
