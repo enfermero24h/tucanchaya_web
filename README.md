@@ -145,3 +145,40 @@ mi-proyecto-web front/
 
 # llama3
 https://llama3-1.llamameta.net/*?Policy=eyJTdGF0ZW1lbnQiOlt7InVuaXF1ZV9oYXNoIjoiZ3VqcjE1bmkzdmtnNGxjazM5Z3FmNHR2IiwiUmVzb3VyY2UiOiJodHRwczpcL1wvbGxhbWEzLTEubGxhbWFtZXRhLm5ldFwvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyMjAxODcwOH19fV19&Signature=BB48amqT5hFEdkB3ArL2igbUyKUUrd0Jl5P7WZa33g6vi1USv1OeWQsHrzkSMxqUqnWEn36v2PUUiEcCkQUIaVkmydsVM7CgRIbVujTolN0Gox-kRAK5fnOr2SAingQSntSQSP5RMYohfFaZ5JTJpkAwv8fZpVS8MP7UsRl--NsKvCzx2BlupSTHR%7ELmKqGvPLqGdZufd7Dy6PuxfnPAFpLl0iqPp5G94fPYCxIQrcVDDfji23uWM4M0P3Ua0fodvByzZZNEDmmP-If-cG4dUOWFaX8P5GpzlZcWmggREJSVQnjJNd8N2dE7phBu3NFiUj%7EjuY6m8gIuV0WgKBSEFA__&Key-Pair-Id=K15QRJLYKIFSLZ&Download-Request-ID=1758532828224670
+
+# troneos 
+
+Sistema de torneos
+
+Gestión de equipos
+
+Notificaciones y recordatorios
+
+Sistema de calificaciones y reseñas
+
+Estadísticas y análisis
+
+Programa de fidelización
+
+Integración con redes sociales
+
+Gestión de inventario de equipamiento
+
+Reservas recurrentes
+
+Panel de administración avanzado
+
+
+Empecemos con la primera funcionalidad: Sistema de torneos. Esta funcionalidad permitirá a los usuarios crear, gestionar y participar en torneos utilizando las canchas disponibles. Vamos a desglosarla en partes:
+
+
+
+Modelo de Torneo
+
+Servicio de Torneo
+
+Controlador de Torneo
+
+Rutas de Torneo
+
+Lógica de negocio para la gestión de torneos
