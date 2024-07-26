@@ -1,12 +1,14 @@
 import mongoose from 'mongoose';
 import Equipo from '../models/equipo';
 import Torneo, { ITorneo } from '../models/torneo';
+import NotificacionService from './notificacionService';
 
 class TorneoService {
   async crearTorneo(torneoData: Partial<ITorneo>): Promise<ITorneo> {
     const torneo = new Torneo(torneoData);
     return await torneo.save();
   }
+  //getionamos la parte de la informacion para la gestio nd
 
   async obtenerTorneos(): Promise<ITorneo[]> {
     return await Torneo.find().populate('equiposParticipantes');
@@ -17,7 +19,11 @@ class TorneoService {
   }
 
   async actualizarTorneo(id: string, torneoData: Partial<ITorneo>): Promise<ITorneo | null> {
-    return await Torneo.findByIdAndUpdate(id, torneoData, { new: true });
+    const torneoActualizado = await Torneo.findByIdAndUpdate(id, torneoData, { new: true });
+    if (torneoActualizado) {
+      await NotificacionService.notificarCambioTorneo(id, 'Se han actualizado los detalles del torneo.');
+    }
+    return torneoActualizado;
   }
 
   async eliminarTorneo(id: string): Promise<ITorneo | null> {
@@ -64,8 +70,11 @@ class TorneoService {
       derrotasVisitante: 0,
       rachaActual: []
     });
-
-    return await torneo.save();
+    const torneoActualizado = await torneo.save();
+    if (torneoActualizado) {
+      await NotificacionService.notificarCambioTorneo(torneoId, `Se ha inscrito un nuevo equipo: ${equipo.nombre}`);
+    }
+    return torneoActualizado;
   }
 }
 

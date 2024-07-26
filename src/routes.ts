@@ -7,6 +7,8 @@ import reservaRoutes from './routes/Crud/reservaRoutes';
 import sectorRoutes from './routes/Crud/sectorRoutes';
 import authRoutes from './routes/auth/authRoutes';
 import disponibilidadCanchaRoutes from './routes/disponibilidadCanchaRoutes';
+import estadisticaRoutes from './routes/estadisticaRoutes';
+import notificacionRoutes from './routes/notificacionRoutes';
 import pagoRoutes from './routes/pagoRoutes';
 import partidoRoutes from './routes/partidoRoutes';
 import torneoRoutes from './routes/torneoRoutes';
@@ -35,4 +37,10 @@ export default function setupRoutes(app: Express) {
 
     //partidos
     app.use('/api/partidos', partidoRoutes);
+
+    //notificaciones
+    app.use('/api/notificaciones', notificacionRoutes);
+
+    //estadisticas 
+    app.use('/api/estadisticas', estadisticaRoutes);
 }

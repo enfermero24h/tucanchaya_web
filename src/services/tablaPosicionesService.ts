@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Partido from '../models/partido';
 import Torneo, { ITorneo } from '../models/torneo';
 
@@ -30,7 +31,7 @@ class TablaPosicionesService {
     return await torneo.save();
   }
 
-  async actualizarTablaPosiciones(partidoId: string): Promise<ITorneo> {
+  async actualizarTablaPosiciones(partidoId: mongoose.Types.ObjectId): Promise<ITorneo> {
     const partido = await Partido.findById(partidoId);
     if (!partido) throw new Error('Partido no encontrado');
 

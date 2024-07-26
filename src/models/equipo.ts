@@ -1,7 +1,8 @@
 // src/models/Equipo.ts
-import { Schema, model, Document } from 'mongoose';
+import { Document, Schema, Types, model } from 'mongoose';
 
 interface IEquipo extends Document {
+  _id:Types.ObjectId;
   nombre: string;
   ciudad: string;
   jugadores: string[];
