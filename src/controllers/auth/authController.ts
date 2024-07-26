@@ -39,6 +39,41 @@ class AuthController {
             }
         }
         }
+        async createAdmin(req: Request, res: Response) {
+            try {
+                const { user, token } = await AuthService.createAdmin(req.body);
+                res.status(201).json({ user, token });
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    if (error instanceof Error) {
+                    if (error.message === 'User already exists') {
+                        res.status(400).json({ error: error.message });
+                    } else {
+                        res.status(500).json({ error: 'Internal server error' });
+                    }
+                    } else {
+                    res.status(500).json({ error: 'Unknown error' });
+                    }
+                }
+            }
+            
+        async createStaff(req: Request, res: Response) {
+            try {
+                const { user, token } = await AuthService.createStaff(req.body);
+                res.status(201).json({ user, token });
+            } catch (error) {
+                console.error('Registration error:', error);
+                if (error instanceof Error) {
+                if (error.message === 'User already exists') {
+                    res.status(400).json({ error: error.message });
+                } else {
+                    res.status(500).json({ error: 'Internal server error' });
+                }
+                } else {
+                res.status(500).json({ error: 'Unknown error' });
+                }
+            }
+        }
     }
     
     export default new AuthController();

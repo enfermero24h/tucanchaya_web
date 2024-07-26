@@ -12,7 +12,7 @@ interface AuthResponse {
 class AuthService {
   private secret = process.env.JWT_SECRET || 'your_jwt_secret';
 
-  async register(userData: IUser): Promise<AuthResponse> {
+  async register(userData: IUser, role: 'usuario' | 'admin' | 'staff' = 'usuario'): Promise<AuthResponse> {
     const { email, password } = userData;
     console.log('Registering user:', email);
 
@@ -27,13 +27,18 @@ class AuthService {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Crear nuevo usuario
-    const user = new User({ ...userData, password: hashedPassword });
+    // Crear nuevo usuario con el rol especificado
+    const user = new User({
+      ...userData,
+      password: hashedPassword,
+      role: role
+    });
     await user.save();
-    console.log('User registered successfully:', email);
+
+    console.log('User registered successfully:', email, 'with role:', role);
 
     // Crear token
-    const token = this.generateToken(user._id.toString());
+    const token = this.generateToken(user._id.toString(), role);
     return { user, token };
   }
 
@@ -57,12 +62,20 @@ class AuthService {
     console.log('Login successful for:', email);
 
     // Crear token
-    const token = this.generateToken(user._id.toString());
+    const token = this.generateToken(user._id.toString(), user.role);
     return { user, token };
   }
 
-  private generateToken(userId: string): string {
-    return jwt.sign({ id: userId }, this.secret, { expiresIn: '1h' });
+  async createAdmin(userData: IUser): Promise<AuthResponse> {
+    return this.register(userData, 'admin');
+  }
+
+  async createStaff(userData: IUser): Promise<AuthResponse> {
+    return this.register(userData, 'staff');
+  }
+
+  private generateToken(userId: string, role: string): string {
+    return jwt.sign({ id: userId, role }, this.secret, { expiresIn: '1h' });
   }
 }
 
