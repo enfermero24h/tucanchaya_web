@@ -1,29 +1,26 @@
-// src/models/Partido.ts
-import { Schema, model, Document } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-interface IPartido extends Document {
-  equipoLocal: string;
-  equipoVisitante: string;
+export interface IPartido extends Document {
+  _id: mongoose.Types.ObjectId;
+  torneo: mongoose.Types.ObjectId;
+  equipoLocal: mongoose.Types.ObjectId;
+  equipoVisitante: mongoose.Types.ObjectId;
   fecha: Date;
-  lugar: string;
-  marcador?: {
-    local: number;
-    visitante: number;
-  };
+  cancha: mongoose.Types.ObjectId;
+  golesLocal?: number;
+  golesVisitante?: number;
+  estado: 'programado' | 'en_curso' | 'finalizado' | 'cancelado';
 }
 
-const PartidoSchema = new Schema<IPartido>({
-  equipoLocal: { type: String, required: true },
-  equipoVisitante: { type: String, required: true },
+const partidoSchema: Schema = new Schema({
+  torneo: { type: Schema.Types.ObjectId, ref: 'Torneo', required: true },
+  equipoLocal: { type: Schema.Types.ObjectId, ref: 'Equipo', required: true },
+  equipoVisitante: { type: Schema.Types.ObjectId, ref: 'Equipo', required: true },
   fecha: { type: Date, required: true },
-  lugar: { type: String, required: true },
-  marcador: {
-    local: { type: Number, default: 0 },
-    visitante: { type: Number, default: 0 }
-  }
-});
+  cancha: { type: Schema.Types.ObjectId, ref: 'Cancha', required: true },
+  golesLocal: { type: Number },
+  golesVisitante: { type: Number },
+  estado: { type: String, enum: ['programado', 'en_curso', 'finalizado', 'cancelado'], default: 'programado' }
+}, { timestamps: true });
 
-const Partido = model<IPartido>('Partido', PartidoSchema);
-
-export default Partido;
-export { IPartido };
+export default mongoose.model<IPartido>('Partido', partidoSchema);

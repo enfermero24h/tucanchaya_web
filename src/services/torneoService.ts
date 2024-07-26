@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import Equipo from '../models/equipo';
 import Torneo, { ITorneo } from '../models/torneo';
+import PartidoService from './partidoServices';
 
 class TorneoService {
   async crearTorneo(torneoData: Partial<ITorneo>): Promise<ITorneo> {
@@ -67,6 +68,15 @@ class TorneoService {
 
     torneo.ganador = equipoObjectId;
     torneo.estado = 'finalizado';
+    return await torneo.save();
+  }
+  async generarFixtureTorneo(torneoId: string): Promise<ITorneo | null> {
+    const torneo = await Torneo.findById(torneoId);
+    if (!torneo) throw new Error('Torneo no encontrado');
+  
+    await PartidoService.generarFixture(torneoId);
+  
+    torneo.estado = 'en_curso';
     return await torneo.save();
   }
 }
