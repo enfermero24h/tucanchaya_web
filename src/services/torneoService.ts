@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import Equipo from '../models/equipo';
 import Torneo, { ITorneo } from '../models/torneo';
-import PartidoService from './partidoServices';
 
 class TorneoService {
   async crearTorneo(torneoData: Partial<ITorneo>): Promise<ITorneo> {
@@ -10,18 +9,11 @@ class TorneoService {
   }
 
   async obtenerTorneos(): Promise<ITorneo[]> {
-    return await Torneo.find()
-      .populate('equiposParticipantes')
-      .populate('canchas')
-      .populate('creador');
+    return await Torneo.find().populate('equiposParticipantes');
   }
 
   async obtenerTorneoPorId(id: string): Promise<ITorneo | null> {
-    return await Torneo.findById(id)
-      .populate('equiposParticipantes')
-      .populate('canchas')
-      .populate('creador')
-      .populate('ganador');
+    return await Torneo.findById(id).populate('equiposParticipantes');
   }
 
   async actualizarTorneo(id: string, torneoData: Partial<ITorneo>): Promise<ITorneo | null> {
@@ -50,33 +42,29 @@ class TorneoService {
     }
 
     torneo.equiposParticipantes.push(equipoObjectId);
-    return await torneo.save();
-  }
 
-  async establecerGanador(torneoId: string, equipoId: string): Promise<ITorneo | null> {
-    const torneo = await Torneo.findById(torneoId);
-    const equipo = await Equipo.findById(equipoId);
+    // Agregar el equipo a la tabla de posiciones
+    torneo.tablaPosiciones.push({
+      equipo: equipoObjectId,
+      puntos: 0,
+      partidosJugados: 0,
+      victorias: 0,
+      empates: 0,
+      derrotas: 0,
+      golesFavor: 0,
+      golesContra: 0,
+      diferenciaGoles: 0,
+      partidosLocal: 0,
+      partidosVisitante: 0,
+      victoriasLocal: 0,
+      victoriasVisitante: 0,
+      empatesLocal: 0,
+      empatesVisitante: 0,
+      derrotasLocal: 0,
+      derrotasVisitante: 0,
+      rachaActual: []
+    });
 
-    if (!torneo || !equipo) {
-      throw new Error('Torneo o equipo no encontrado');
-    }
-
-    const equipoObjectId = new mongoose.Types.ObjectId(equipoId);
-    if (!torneo.equiposParticipantes.some(id => id.equals(equipoObjectId))) {
-      throw new Error('Este equipo no participa en el torneo');
-    }
-
-    torneo.ganador = equipoObjectId;
-    torneo.estado = 'finalizado';
-    return await torneo.save();
-  }
-  async generarFixtureTorneo(torneoId: string): Promise<ITorneo | null> {
-    const torneo = await Torneo.findById(torneoId);
-    if (!torneo) throw new Error('Torneo no encontrado');
-  
-    await PartidoService.generarFixture(torneoId);
-  
-    torneo.estado = 'en_curso';
     return await torneo.save();
   }
 }

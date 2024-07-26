@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
 import Partido, { IPartido } from '../models/partido';
 import Torneo from '../models/torneo';
+import TablaPosicionesService from './tablaPosicionesService';
 
 class PartidoService {
   async crearPartido(partidoData: Partial<IPartido>): Promise<IPartido> {
@@ -17,15 +17,21 @@ class PartidoService {
   }
 
   async actualizarResultado(partidoId: string, golesLocal: number, golesVisitante: number): Promise<IPartido | null> {
-    return await Partido.findByIdAndUpdate(
+    const partido = await Partido.findByIdAndUpdate(
       partidoId,
-      {
-        golesLocal,
-        golesVisitante,
-        estado: 'finalizado'
+      { 
+        golesLocal, 
+        golesVisitante, 
+        estado: 'finalizado' 
       },
       { new: true }
     );
+
+    if (partido) {
+      await TablaPosicionesService.actualizarTablaPosiciones(partidoId);
+    }
+
+    return partido;
   }
 
   async generarFixture(torneoId: string): Promise<IPartido[]> {
@@ -40,19 +46,20 @@ class PartidoService {
     for (let i = 0; i < equipos.length; i++) {
       for (let j = i + 1; j < equipos.length; j++) {
         const partido = new Partido({
-          torneo: new mongoose.Types.ObjectId(torneoId),
-          equipoLocal: new mongoose.Types.ObjectId(equipos[i].toString()),
-          equipoVisitante: new mongoose.Types.ObjectId(equipos[j].toString()),
-          fecha: new Date(), // Ajustar según la lógica de programación
-          cancha: new mongoose.Types.ObjectId(canchas[Math.floor(Math.random() * canchas.length)]._id.toString()),
+          torneo: torneoId,
+          equipoLocal: equipos[i],
+          equipoVisitante: equipos[j],
+          fecha: new Date(),
+          cancha: canchas[Math.floor(Math.random() * canchas.length)]._id,
           estado: 'programado'
         });
         partidos.push(partido);
       }
     }
 
-    // Guardar los partidos generados
-    return await Partido.insertMany(partidos);
+    const partidosCreados = await Partido.insertMany(partidos);
+    await TablaPosicionesService.inicializarTablaPosiciones(torneoId);
+    return partidosCreados;
   }
 }
 
