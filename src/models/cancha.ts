@@ -1,7 +1,8 @@
 // src/models/Cancha.ts
-import { Document, Schema, model } from 'mongoose';
+import { Document, Schema, Types, model } from 'mongoose';
 
 interface ICancha extends Document {
+  _id: Types.ObjectId;
   nombre: string;
   direccion: string;
   dimensiones: string;

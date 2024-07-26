@@ -182,3 +182,88 @@ Controlador de Torneo
 Rutas de Torneo
 
 Lógica de negocio para la gestión de torneos
+
+
+
+# seguda face con mejorar 
+
+
+Gestión de partidos del torneo:
+
+
+
+Crear un modelo, servicio y controlador para los partidos del torneo.
+
+Implementar la generación automática de fixture (calendario de partidos).
+
+Permitir la actualización de resultados de partidos.
+
+
+
+
+Sistema de puntuación:
+
+
+
+Agregar un sistema de puntos para los equipos en el torneo.
+
+Implementar una tabla de posiciones actualizada automáticamente.
+
+
+
+
+Notificaciones:
+
+
+
+Enviar notificaciones a los equipos sobre próximos partidos.
+
+Notificar a los participantes sobre cambios en el torneo.
+
+
+
+
+Estadísticas del torneo:
+
+
+
+Llevar un registro de estadísticas como goles, asistencias, tarjetas, etc.
+
+Generar reportes de rendimiento de equipos y jugadores.
+
+
+
+
+Interfaz de administración del torneo:
+
+
+
+Crear una interfaz para que los administradores gestionen fácilmente los torneos.
+
+
+
+
+Integración con el sistema de reservas:
+
+
+
+Asegurar que las canchas estén reservadas automáticamente para los partidos del torneo.
+
+
+
+
+Sistema de eliminatorias:
+
+
+
+Implementar lógica para manejar diferentes formatos de torneo (grupos, eliminación directa, etc.).
+
+
+
+
+Gestión de inscripciones y pagos:
+
+
+
+Implementar un sistema para manejar las inscripciones de equipos y los pagos asociados.
+
